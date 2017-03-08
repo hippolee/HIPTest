@@ -54,35 +54,36 @@ public class Test {
 	// + "|((?<=\\D+|^)(\\d{1,3}-\\d{6,20})(?=\\D+|$))"
 	// + "|((?<=\\D+|^)(\\d{7,23})(?=\\D+|$))";
 
-	private static final String regex = "(?<=\\D+|^)(\\d{1,3}-\\d{1,4}-\\d{3,8}-\\d{3,8}|\\d{2,3}-\\d{5,6}-\\d{3,8}|\\d{2,3}-\\d{3,4}-\\d{3,16}|\\d{2,3}-\\d{1,2}-\\d{6,16}|\\d{1}-\\d{5,12}-\\d{3,8}|\\d{1}-\\d{1,4}-\\d{6,16}|\\d{8}-\\d{3,8}|\\d{4,7}-\\d{3,16}|\\d{1,3}-\\d{6,20}\\d{7,23})(?=\\D+|$)";
+	private static final String regex = 
+			"(?<!\\d+)"
+			+ "(\\d{1,3}-\\d{1,4}-\\d{3,8}-\\d{3,8}"
+			+ "|\\d{2,3}-\\d{5,6}-\\d{3,8}"
+			+ "|\\d{2,3}-\\d{3,4}-\\d{3,16}"
+			+ "|\\d{2,3}-\\d{1,2}-\\d{6,16}"
+			+ "|\\d{1}-\\d{5,12}-\\d{3,8}"
+			+ "|\\d{1}-\\d{1,4}-\\d{6,16}"
+			+ "|\\d{8}-\\d{3,8}"
+			+ "|\\d{4,7}-\\d{3,16}"
+			+ "|\\d{1,3}-\\d{6,20}"
+			+ "|\\d{7,23})"
+			+ "(?!\\d+)";
 
-	// + "|(^(\\d{1,3}-\\d{1,4}-\\d{3,8}-\\d{3,8})(?=\\D+|$))"
-	// + "|(^(\\d{2,3}-\\d{5,6}-\\d{3,8})(?=\\D+|$))"
-	// + "|(^(\\d{2,3}-\\d{3,4}-\\d{3,16})(?=\\D+|$))"
-	// + "|(^(\\d{2,3}-\\d{1,2}-\\d{6,16})(?=\\D+|$))"
-	// + "|(^(\\d{1}-\\d{5,12}-\\d{3,8})(?=\\D+|$))"
-	// + "|(^(\\d{1}-\\d{1,4}-\\d{6,16})(?=\\D+|$))"
-	// + "|(^(\\d{8}-\\d{3,8})(?=\\D+|$))"
-	// + "|(^(\\d{4,7}-\\d{3,16})(?=\\D+|$))"
-	// + "|(^(\\d{1,3}-\\d{6,20})(?=\\D+|$))"
-	// + "|(^(\\d{7,23})(?=\\D+|$))";
-
-	// \\d{1,3}-\\d{1,4}-\\d{3,8}-\\d{3,8}
-	// \\d{2,3}-\\d{5,6}-\\d{3,8}
-	// \\d{2,3}-\\d{3,4}-\\d{3,16}
-	// \\d{2,3}-\\d{1,2}-\\d{6,16}
-	// \\d{1}-\\d{5,12}-\\d{3,8}
-	// \\d{1}-\\d{1,4}-\\d{6,16}
-	// \\d{8}-\\d{3,8}
-	// \\d{4,7}-\\d{3,16}
-	// \\d{1,3}-\\d{6,20}
-	// \\d{7,23}
+//	 \\d{1,3}-\\d{1,4}-\\d{3,8}-\\d{3,8}
+//	 \\d{2,3}-\\d{5,6}-\\d{3,8}
+//	 \\d{2,3}-\\d{3,4}-\\d{3,16}
+//	 \\d{2,3}-\\d{1,2}-\\d{6,16}
+//	 \\d{1}-\\d{5,12}-\\d{3,8}
+//	 \\d{1}-\\d{1,4}-\\d{6,16}
+//	 \\d{8}-\\d{3,8}
+//	 \\d{4,7}-\\d{3,16}
+//	 \\d{1,3}-\\d{6,20}
+//	 \\d{7,23}
 
 	public static void main(String[] args) {
+		 s1();
 		// s4();
-		// s1();
-		// s2();
-		s3();
+//		s2();
+		// s3();
 	}
 
 	public static void s1() {
@@ -90,27 +91,28 @@ public class Test {
 		// 一个杠
 		for (int i = 1; i <= 30; i++) {
 			String s1 = genPartString(i, "");
-
-			StringBuilder sb = new StringBuilder(s1);
-
-			Matcher matcher = pattern.matcher(s1);
-			while (matcher.find()) {
-				sb.append("\t");
-				sb.append(matcher.group());
-			}
-
-			logger.error(sb.toString());
-
-			s1 = "AAA" + s1;
-			sb = new StringBuilder(s1);
-
-			matcher = pattern.matcher(s1);
-			while (matcher.find()) {
-				sb.append("\t");
-				sb.append(matcher.group());
-			}
-
-			logger.error(sb.toString());
+			logger.error(s1);
+//			 StringBuilder sb = new StringBuilder(s1);
+			
+//			 Matcher matcher = pattern.matcher(s1);
+//			 while (matcher.find()) {
+//			 sb.append("\t");
+//			 sb.append(matcher.group());
+//			 }
+//			
+//			 logger.error(sb.toString());
+			
+			 s1 = "AAA" + s1 + "BBB";
+//			 sb = new StringBuilder(s1);
+//			
+//			 matcher = pattern.matcher(s1);
+//			 while (matcher.find()) {
+//			 sb.append("\t");
+//			 sb.append(matcher.group());
+//			 }
+			
+//			 logger.error(sb.toString());
+			 logger.error(s1);
 		}
 	}
 
@@ -121,38 +123,38 @@ public class Test {
 			String s1 = genPartString(i, "");
 			for (int j = 1; j <= 23; j++) {
 				String s2 = genPartString(j, s1);
-
-				StringBuilder sb = new StringBuilder(s2);
-
-				Matcher matcher = pattern.matcher(s2);
-				while (matcher.find()) {
-					sb.append("\t");
-					sb.append(matcher.group());
-				}
-
-				logger.error(sb.toString());
-
-				s2 = "AAA" + s2;
-				sb = new StringBuilder(s2);
-
-				matcher = pattern.matcher(s2);
-				while (matcher.find()) {
-					sb.append("\t");
-					sb.append(matcher.group());
-				}
-
-				logger.error(sb.toString());
-
-				s2 = s2 + "BBB";
-				sb = new StringBuilder(s2);
-
-				matcher = pattern.matcher(s2);
-				while (matcher.find()) {
-					sb.append("\t");
-					sb.append(matcher.group());
-				}
-
-				logger.error(sb.toString());
+				logger.error(s2);
+				// StringBuilder sb = new StringBuilder(s2);
+				//
+				// Matcher matcher = pattern.matcher(s2);
+				// while (matcher.find()) {
+				// sb.append("\t");
+				// sb.append(matcher.group());
+				// }
+				//
+				// logger.error(sb.toString());
+				//
+				// s2 = "AAA" + s2;
+				// sb = new StringBuilder(s2);
+				//
+				// matcher = pattern.matcher(s2);
+				// while (matcher.find()) {
+				// sb.append("\t");
+				// sb.append(matcher.group());
+				// }
+				//
+				// logger.error(sb.toString());
+				//
+				// s2 = s2 + "BBB";
+				// sb = new StringBuilder(s2);
+				//
+				// matcher = pattern.matcher(s2);
+				// while (matcher.find()) {
+				// sb.append("\t");
+				// sb.append(matcher.group());
+				// }
+				//
+				// logger.error(sb.toString());
 			}
 		}
 	}

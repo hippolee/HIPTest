@@ -28,7 +28,7 @@
 		</File>
 	</Appenders>
 	<Loggers>
-		<logger name="com.shadow.tg.test" level="info" additivity="false">
+		<logger name="com.shadow.test" level="info" additivity="false">
 			<appender-ref ref="TestLog" />
 		</logger>
 		<!-- 配置日志的根节点 -->
